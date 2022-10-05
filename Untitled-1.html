@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="prism.css">
+  <script defer src="prism.js"></script>
+</head>
+<body>
+
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    pre{
+      max-width: 500px;
+      width: 100%;
+    }
+  </style>
+
+<button class="copy">copy</button>
+
+
+<pre>
+  <code class="language-html">
+&lt;header&gt;
+  &lt;h1&gt;Example HTML&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main class=&quot;style&quot;&gt;
+  &lt;p&gt;Some text&lt;/p&gt;
+&lt;/main&gt; 
+
+
+&lt;style&gt;
+  .body{
+    color: #000;
+    background-color: #fff;
+  }
+&lt;/style&gt;
+
+
+&lt;script&gt;
+  let hello = document.querySelector('.fff')
+  let example = true;
+
+  function foo(arg) {
+    console.log( "do", arg);
+    arg = example ? true : false;
+    return arg;
+  }
+&lt;/script&gt;
+  </code>
+</pre>
+
+<script>
+  let copy = document.querySelector('.copy')
+
+  copy.addEventListener('click', () => {
+    let languageHtml = document.querySelector('.language-html')
+
+    //выделяем котнтент внутри блока
+    let range = document.createRange();
+    range.selectNode(languageHtml); 
+    window.getSelection().addRange(range); 
+
+    //попытка скопировать текст в буфер обмена
+    try { 
+    document.execCommand('copy'); 
+    } catch(err) { 
+      console.log('Can`t copy, boss'); 
+    } 
+    
+    //очистка выделения текста
+    window.getSelection().removeAllRanges();
+  })
+</script>
+
+</body>
+</html>
